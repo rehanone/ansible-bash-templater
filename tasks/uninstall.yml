@@ -1,0 +1,13 @@
+# code: language=ansible
+---
+- name: Remove templater script link from binary_directory
+  become: true
+  ansible.builtin.file:
+    path: '{{ templater_config.binary_directory }}/templater'
+    state: absent
+
+- name: Remove templater install directory
+  become: true
+  ansible.builtin.file:
+    path: '{{ templater_config.install_directory }}'
+    state: absent

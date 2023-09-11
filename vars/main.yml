@@ -1,0 +1,10 @@
+# code: language=ansible
+---
+# Default dictionary
+templater_defaults:
+  debug: '{{ templater_debug }}'
+  state: '{{ templater_state }}'
+  install_directory: '{{ templater_install_directory }}'
+  binary_directory: '{{ templater_binary_directory }}'
+  repo_source: '{{ templater_repo_source }}'
+  repo_revision: '{{ templater_repo_revision }}'
