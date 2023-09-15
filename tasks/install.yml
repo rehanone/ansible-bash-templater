@@ -1,0 +1,16 @@
+# code: language=ansible
+---
+- name: Clone templater
+  become: true
+  ansible.builtin.git:
+    repo: '{{ templater_config.repo_source }}'
+    dest: '{{ templater_config.install_directory }}'
+    depth: 1
+    version: '{{ templater_config.repo_revision }}'
+
+- name: Link templater script from install directory to binary directory
+  become: true
+  ansible.builtin.file:
+    src: '{{ templater_config.install_directory }}/templater'
+    dest: '{{ templater_config.binary_directory }}/templater'
+    state: link

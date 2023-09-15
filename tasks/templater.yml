@@ -1,0 +1,21 @@
+# code: language=ansible
+---
+- name: Set templater_config
+  ansible.builtin.set_fact:
+    templater_config: >-
+      {{ templater_defaults | ansible.builtin.combine(
+        (templater | default(templater_defaults))
+      ) }}
+
+- name: Print templater_config dictionary if debug flag is set
+  ansible.builtin.debug:
+    var: templater_config
+  when: templater_config.debug
+
+- name: Install templater
+  ansible.builtin.include_tasks: install.yml
+  when: (templater_config.state | string) == 'present'
+
+- name: Uninstall templater
+  ansible.builtin.include_tasks: uninstall.yml
+  when: (templater_config.state | string) == 'absent'

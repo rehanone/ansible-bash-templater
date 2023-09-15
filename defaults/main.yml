@@ -1,0 +1,19 @@
+# code: language=ansible
+---
+# Default value for debug
+templater_debug: false
+
+# Default state
+templater_state: present
+
+# The source repository url for templater
+templater_repo_source: 'https://github.com/vicentebolea/bash-templater.git'
+
+# The source repository revision for templater
+templater_repo_revision: master
+
+# The directory where `templater` executable is installed
+templater_install_directory: '/opt/bash-templater'
+
+# The systems' binary directory where `templater` executable will be linked to make is avalible on PATH
+templater_binary_directory: '/usr/local/bin'
